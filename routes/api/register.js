@@ -2,11 +2,11 @@ const bcrypt = require('bcrypt')
 const express = require('express')
 const { body, validationResult } = require('express-validator')
 
-const User = require('../../db/User')
+const User = require('../../models/User')
 
 const register = express.Router()
 
-//Register URI
+//Register route
 register.post(
     '/',
     body('login').not().isEmpty(),
@@ -35,6 +35,7 @@ register.post(
         } catch(err) {
             return res.status(500).json({msg: "Something went wrong"})
         }
-    })
+    }
+)
 
-    module.exports = register
+module.exports = register
